@@ -1,0 +1,26 @@
+name: "Vault Unseal Actions"
+description: "Github Action for Unsealing HashiCorp Vault for Free"
+author: "omegion"
+inputs:
+  address:
+    description: "Vault server address"
+    required: true
+  shard:
+    description: "Vault shard"
+    required: true
+  image:
+    description: "Vault shard"
+    required: false
+    default: "latest"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run vault-unseal CLI from Github Action REF
+      run: |
+        docker run --rm -i ghcr.io/omegion/vault-unseal:${{ inputs.image }} \
+          unseal \
+          --address=${{ inputs.address }} \
+          --shard=${{ inputs.shard }} \
+          --logLevel=debug
+      shell: sh

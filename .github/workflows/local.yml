@@ -1,0 +1,31 @@
+name: Local
+
+on:
+  workflow_dispatch:
+    inputs:
+      address:
+        description: 'Vault server address'
+        required: true
+        default: 'vault.local'
+      shard:
+        description: 'Vault shard'
+        required: true
+        default: 'x'
+
+jobs:
+  local_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: ./
+      - name: Self test
+        id: selftest
+        uses: omegion/vault-unseal-action@v1
+        with:
+          address: ${{ secrets.ARGOCD_ADDR }}
+          shard: ${{ github.event.inputs.shard }}
+          image: latest
+
+
