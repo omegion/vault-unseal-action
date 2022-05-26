@@ -5,8 +5,14 @@ inputs:
   address:
     description: "Vault server address"
     required: true
-  shard:
-    description: "Vault shard"
+  shard1:
+    description: "Vault shard 1"
+    required: true
+  shard2:
+    description: "Vault shard 2"
+    required: true
+  shard3:
+    description: "Vault shard 3"
     required: true
   image:
     description: "Vault shard"
@@ -18,9 +24,9 @@ runs:
   steps:
     - name: Run vault-unseal CLI from Github Action REF
       run: |
-        docker run --rm -i ghcr.io/omegion/vault-unseal:${{ inputs.image }} \
+        docker run --rm -ti ghcr.io/omegion/vault-unseal:${{ inputs.image }} \
           unseal \
           --address=${{ inputs.address }} \
-          --shard=${{ inputs.shard }} \
+          --shard=${{ inputs.shard1 }},${{ inputs.shard2 }},${{ inputs.shard3 }} \
           --logLevel=debug
       shell: sh

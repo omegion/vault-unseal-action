@@ -22,10 +22,12 @@ jobs:
           path: ./
       - name: Self test
         id: selftest
-        uses: omegion/vault-unseal-action@v1
+        uses: omegion/vault-unseal-action@master
         with:
-          address: ${{ secrets.ARGOCD_ADDR }}
-          shard: ${{ github.event.inputs.shard }}
+          address: ${{ secrets.VAULT_ADDR }}
+          shard1: x
+          shard2: y
+          shard3: z
           image: latest
 
 
