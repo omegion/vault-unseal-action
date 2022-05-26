@@ -1,6 +1,9 @@
 name: "Vault Unseal Actions"
 description: "Github Action for Unsealing HashiCorp Vault for Free"
 author: "omegion"
+branding:
+  icon: box
+  color: yellow
 inputs:
   address:
     description: "Vault server address"
