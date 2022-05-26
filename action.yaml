@@ -24,7 +24,7 @@ runs:
   steps:
     - name: Run vault-unseal CLI from Github Action REF
       run: |
-        docker run --rm -ti ghcr.io/omegion/vault-unseal:${{ inputs.image }} \
+        docker run --rm -i ghcr.io/omegion/vault-unseal:${{ inputs.image }} \
           unseal \
           --address=${{ inputs.address }} \
           --shard=${{ inputs.shard1 }},${{ inputs.shard2 }},${{ inputs.shard3 }} \
