@@ -46,7 +46,7 @@ jobs:
 
 ### Unseal Vault Server Periodically
 
-You can sync ArgoCD application after building an image etc.
+You can run a periodic GitHub action to be sure your Vault server is always unsealed.
 
 ```yaml
 name: Unseal Vault Server Every Hour
